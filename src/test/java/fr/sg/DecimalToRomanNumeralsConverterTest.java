@@ -2,48 +2,32 @@ package fr.sg;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-public class DecimalToRomanNumeralsConverterTest
-{
+import java.util.Arrays;
+import java.util.Collection;
 
-    @Test
-    public void should_return_I_when_input_is_1() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(1)).isEqualTo("I");
+@RunWith(value = Parameterized.class)
+public class DecimalToRomanNumeralsConverterTest {
+
+    private int input;
+    private String result;
+
+    public DecimalToRomanNumeralsConverterTest(int input, String result) {
+        this.input = input;
+        this.result = result;
+    }
+
+    @Parameterized.Parameters
+    public static Collection addedNumbers() {
+        return Arrays.asList(new Object[][]{{1, "I"}, {5, "V"},
+                {10, "X"}, {50, "L"}, {100, "C"}, {500, "D"}, {1000, "M"}});
     }
 
     @Test
-    public void should_return_V_when_input_is_5() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(5)).isEqualTo("V");
+    public void should_return_translated_value_assigned_to_input() throws Exception {
+        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(input)).isEqualTo(result);
     }
 
-    @Test
-    public void should_return_X_when_input_is_10() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(10)).isEqualTo("X");
-    }
-
-    @Test
-    public void should_return_L_when_input_is_50() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(50)).isEqualTo("L");
-    }
-
-    @Test
-    public void should_return_C_when_input_is_100() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(100)).isEqualTo("C");
-    }
-    @Test
-    public void should_return_D_when_input_is_500() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(500)).isEqualTo("D");
-    }
-
-    @Test
-    public void should_return_M_when_input_is_1000() throws Exception
-    {
-        Assertions.assertThat(DecimalToRomanNumeralConverter.convert(1000)).isEqualTo("M");
-    }
 }
