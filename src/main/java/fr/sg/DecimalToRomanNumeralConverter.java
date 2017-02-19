@@ -4,6 +4,6 @@ public class DecimalToRomanNumeralConverter
 {
     public static String convert(int decimal)
     {
-        return "X";
+        return "I";
     }
 }
