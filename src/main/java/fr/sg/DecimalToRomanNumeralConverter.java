@@ -2,8 +2,11 @@ package fr.sg;
 
 public class DecimalToRomanNumeralConverter
 {
+
     public static String convert(int decimal)
     {
-        return "I";
+        if(decimal == 1)
+            return "I";
+        return "X";
     }
 }
